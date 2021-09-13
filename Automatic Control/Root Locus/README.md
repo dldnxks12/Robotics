@@ -2,7 +2,7 @@
 
 Root Locus는 시스템의 TF를 알 때 사용할 수 있는 안정성 확인 방법이다.
 
-`Root Locus` : 시스템 TF의 CE를 1+KL(s) 형태로 바꾸고 K에 따라 발생할 수 있는 모든 Pole을 싹다 그리는 방법
+`Root Locus` : 시스템 TF의 CE를 1+KL(s) 형태로 바꾸고 K에 따라 `발생할 수 있는 모든 Pole을 싹다 그리는 방법`
 
 <br>
 
