@@ -4,6 +4,12 @@
 
 ![image](https://user-images.githubusercontent.com/59076451/133050799-ec12845b-7f0b-47b8-b94b-c4d861d84e23.png)
 
+
+`Actual DC Motor Example Block Diagram`
+
+![image](https://user-images.githubusercontent.com/59076451/133053833-cb47fd8b-9e12-45df-b8d5-f27968e80c68.png)
+
+
 <br>
 
 <br>
