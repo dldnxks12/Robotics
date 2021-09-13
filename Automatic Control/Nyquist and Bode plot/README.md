@@ -39,6 +39,8 @@ System TF의 Pole을 이용해서 안정성을 검사했는데, 그럼 `System T
       
       따라서, Root Locus는 CL의 특성이다.
 
+<br>    
+
 - `How to Draw Bode Plot?`
 
 ![image](https://user-images.githubusercontent.com/59076451/133126707-e7da53c2-c5fd-4471-a0cf-d1b3340c617a.png)
@@ -79,13 +81,15 @@ System TF의 Pole을 이용해서 안정성을 검사했는데, 그럼 `System T
 
 `Z = N+P = 0` 이면 안정하다. 
 
+<br>    
+
 - `N, P, Z ?`
 
-OLTF로 Nyquist Plot을 그리고, S = 1/k를 시계 방향으로 몇 바퀴 도는 지 확인한다.  `N`
+OLTF로 Nyquist Plot을 그리고, S = -1/k를 시계 방향으로 몇 바퀴 도는 지 확인한다.  `N`
 
-Z = 1 + KG(s)의 Zero인데, Z는 동시에 CL의 Pole이기도 하다
+Z = 1 + KG(s)의 Zero인데, Z는 동시에 CL의 Pole이기도 하다 `Z`
 
-P = KG(s)의 불안정한 Pole
+P = KG(s)의 불안정한 Pole `P`
 
     Z = N+P은 CL의 불안정한 Pole의 개수이다.
 
