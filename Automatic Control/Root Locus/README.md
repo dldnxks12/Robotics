@@ -10,12 +10,12 @@ Root Locus는 시스템의 TF를 알 때 사용할 수 있는 안정성 확인 �
 
 - Drawing `Root Locus`
 
-1. 궤적의 시작과 끝, 발산 Branch 파악
-2. Real axis 위의 Pole
-3. 발산 각과 무게중심
-4. branch의 시작 각도, 종료 각도
-5. 중근 
-6. K Value Crossing Imaginary Axis 
+            1. 궤적의 시작과 끝, 발산 Branch 파악
+            2. Real axis 위의 Pole
+            3. 발산 각과 무게중심
+            4. branch의 시작 각도, 종료 각도
+            5. 중근 
+            6. K Value Crossing Imaginary Axis 
 
 ![image](https://user-images.githubusercontent.com/59076451/133105563-8604a0ea-ef3d-414a-96d2-710b3663fc51.png)
 
