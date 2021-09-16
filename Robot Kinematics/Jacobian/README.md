@@ -26,49 +26,61 @@
 
 - List
 
-            1. Linear Velocity, Lotational Velocity, Angular Velocity 
-            2. With Frame 
-            3. Jacobian 
+            1. Velocity, Angular Velocity
+            2. Linear Velocity, Angular Velocity of Object
+            3. Representation on Robot
+            4. Jacobian 
 
 
 <br>
 
-#### `Linear Velocity, Lotational Velocity, Angular Velocity `
-
-Static한 상황에서의 End-Effector에서 나아가 움직이는 상황을 생각해본다.
+`Static한 상황`에서의 End-Effector에서 나아가 `움직이는 상황`을 생각해본다.
 
         가속도와 각가속도에 대해서는 추후 로봇 제어에서 다룬다.
         
-        
+<br>
+
+<br>
+
+#### `Velocity, Angular Velocity`
+
+Chapter 2에서 다뤘던 위치와 방향에 대한 미분은 다음과 같은 Notation으로 사용한다.
+
+<div align=center>
+    
+![image](https://user-images.githubusercontent.com/59076451/133607342-321efd02-c503-404b-bc33-b000f1bb0bc0.png)
+    
+</div>    
+
+<br>
+
+<br>
+
+#### `Linear Velocity, Lotational Velocity, Angular Velocity `
+                
 <br>        
 
 - `Linear Velocity`
 
-Mapping의 개념으로 공간 상의 물체의 위치와 방향을 나타내는 것은 다음과 같았다.
+Mapping의 개념으로 공간 상의 물체의 위치와 방향을 나타내는 것을 잘 기억해야한다.
 
 `Linear Velocity`는 물체가 Trasient 운동을 할 때의 속도이다. 따라서 `Rotation Matrix`는 Constant이다.
 
         속도가 분해된 Frame과 표현되는 Frame에 대해 잘 이해해야 한다.
         
-        속도는 점의 속성이므로 기준 Frame에 대해서 물체에 붙어있는 Frame의 원점이 멀어지는 속도로 생각할 수 있다.
-    
-<div align=center>    
-    
----------------------------------------------------------------------------- 이미지    
-    
-</div>    
+        속도는 점의 속성이므로 기준 Frame에 대해서 물체에 붙어있는 Frame의 원점이 멀어지는 속도로 생각할 수 있다.   
     
 <br>  
 
-- `Rotational Velocity`
+- `Angular Velocity`
 
 동일하게 Mapping의 개념으로 공간 상의 물체의 위치와 방향을 나타낸다.
 
-여기서 `Rotation Matrix`는 더이상 상수가 아니며, 다음과 같이 벡터 미분을 수행한다.
+여기서 `Rotation Matrix`는 더이상 상수가 아니며, `Rotation Matrix`에 대해 벡터 미분을 수행한다.
 
 <div align=center>    
 
----------------------------------------------------------------------------- 이미지     
+![image](https://user-images.githubusercontent.com/59076451/133607040-b88c4c1d-6cce-4426-a5a5-1e1567ceeec2.png)
     
 `Rotation Matrix`는 SO(3) Group Matrix이다. 따라서 `전치행렬이 역행렬과 같다.` 
     
@@ -78,19 +90,16 @@ Mapping의 개념으로 공간 상의 물체의 위치와 방향을 나타내는
 
 <br>  
 
-- `Angular Velocity`
 
-`Angular Velocity`는 두 Frame의 원점이 동일할 때, {B}가 {A}에 대해서 회전할 때, 다음과 같이 나타낼 수 있다.
-
-`Angular Velocity` 또는 `Angular Matrix`의 방향 : 회전의 순간 축 - Instantaneous Axis
-`Angular Velocity` 또는 `Angular Matrix`의 크기 : ---------------------------------------------------------------------------- ? 
+`Angular Velocity` 또는 `Angular Matrix`의 방향 : {A}에 대해 회전하는 {B}의 순간 회전축 - Instantaneous Axis  
+`Angular Velocity` 또는 `Angular Matrix`의 크기 : {A}에 대해 회전하는 {B}의 회전 속도 
 
 
 <br>
 
 <br>
 
-#### `With Frame`
+#### `Representation on Robot`
 
 이제 Frame을 로봇에 붙여 각 Link의 속도와 각속도를, 그리고 결국엔 End-Effector의 속도, 각속도를 표현할 수 있다.
 
@@ -98,11 +107,37 @@ Mapping의 개념으로 공간 상의 물체의 위치와 방향을 나타내는
 
 <div align=center>
 
----------------------------------------------------------------------------- 이미지     
-
+![image](https://user-images.githubusercontent.com/59076451/133607850-e9bc3e22-de2d-4c63-8390-5a34ca90847a.png)
 
 </div>
 
+
+<br>
+
+<br>
+
+#### `More on Angular Velocity`
+
+<br>
+
+각속도는 로드리게스 Axis 방법, 오일러 방법으로 구할 수 있다.
+
+이 둘의 차이는 Chapter 2에서 살펴본 바와 같이 `Premultiply와 Postmultiply`의 차이이다. 
+
+<div align=center>
+    
+`로드리게스`
+    
+![image](https://user-images.githubusercontent.com/59076451/133608252-90d7f914-f2f7-49fd-833b-a83892b341a5.png)
+   
+<br>
+    
+`오일러`    
+    
+![image](https://user-images.githubusercontent.com/59076451/133608314-c5ed2c53-f328-4114-ac08-decfb5324d95.png)
+    
+    
+</div>    
 
         
 
