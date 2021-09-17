@@ -43,9 +43,11 @@ sim('sine_sim') % simulink에서 만들어 놓은 Block Diagram 실행 명령
 
 % data가 저장된 work directory path 
 
-% Output Current of Circuit Eqn
-x = ans.current.time;
-y = ans.current.signals.values;
+% Output angle (Integrate Angular Velocity)
+x = ans.angule.time;
+y = ans.angule.signals.values;
+
+y = rad2deg(y) % Radian to Degree
 
 % Output Anguler Value of Mechanical Eqn
 x2 = ans.anguler_vel.time;
