@@ -45,10 +45,22 @@ Datasheet에서의 단위를 그대로 사용하면 안되고, 기본 단위로 
 <br>
 
 
-#### `Result`
-
+- `Result 1`
 
 `Output Value of Circuit Eqn (Current)` && `Output Value of Mechanical Eqn (Angular Velocity)`
 
 ![image](https://user-images.githubusercontent.com/59076451/133053341-a5d2e137-5283-41f5-a589-5462509733cb.png)
+
+<br>
+
+- `Result 2 : Compare Volatage`
+
+![img.png](img.png)
+
+<br>
+
+- `Result 3 : Compare Load Torque`
+
+![img_1.png](img_1.png)
+
 
