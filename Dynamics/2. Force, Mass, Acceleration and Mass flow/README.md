@@ -3,6 +3,7 @@
 <br>
 
 - Force , Mass, Acceleration
+- Mass Flow
 
 <div align="center">
 
@@ -20,3 +21,7 @@
 `뉴턴의 제 2 식에서 말하는 힘과 가속도는 모두 COG에 대한 속성임을 유의해야한다.`
 
 이 후 Angular Momentum에 대해서도 이야기 하겠지만, F = ma 식은 회전에 대한 성질은 설명하지 못한다. 
+
+<br>
+
+`Mass Flow` : F = ma에서 m이 시간에 따라 변할 때, 해당 m의 입출 량에 따라 물체에 힘이 가해진다.

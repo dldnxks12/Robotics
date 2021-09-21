@@ -1,4 +1,4 @@
-## `Ch 12 - 13`
+## Gravity and motion of a point `Ch 12 - 13`
 
 Ch 12 - 13은 점의 운동과 중력에 대한 얘기
 
