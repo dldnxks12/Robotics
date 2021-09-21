@@ -2,16 +2,23 @@
 
 <br>
 
-- `Robot Navigation`
 
-      1. AEB
+- `Dynamics`
+
+      1. Gravity and motion of a point 
+      2. Force, Mass, Acceleration and Energy 
+      3. Momentum 
+      4. Planar Kinematics of Rigid Body 
+      5. Planar Dynamic of Rigid Body 
+      6. Energy and Momentum in Rigid Body Dynamics 
+      7. 3 Dimensional Kinematics and Dynamics of Rigid Body 
 
 - `Robot Kinematics`
 
       1. Definition of Position and Orientation 
       2. Forward Kinematics
       3. Backward Kinematics
-      4. Jacobian 
+      4. Jacobian
 
 - `Motor Control`
 
@@ -25,3 +32,7 @@
       3. Analysis of Feedback
       4. Root-Locus
       5. Nyquist and Bode plot
+
+- `Robot Navigation`
+
+      1. AEB
