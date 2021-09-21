@@ -6,8 +6,8 @@
 - `Dynamics`
 
       1. Gravity and motion of a point 
-      2. Force, Mass, Acceleration and Energy 
-      3. Momentum 
+      2. Force, Mass, Acceleration 
+      3. Energy and Momentum 
       4. Planar Kinematics of Rigid Body 
       5. Planar Dynamic of Rigid Body 
       6. Energy and Momentum in Rigid Body Dynamics 

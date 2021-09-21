@@ -1,5 +1,9 @@
 ### `Dynamics for Robotics`
 
+        Dynamics 필기 노트를 주석과 같이 남겨놓자.
+
+<br>
+
 - List 
 
 1. Gravity and motion of a point `(ch 12 - 13)`
