@@ -47,3 +47,21 @@ A 코일 -> B 코일 -> C 코일에 순서대로 전류를 흘려보내 회전�
         전류를 알맞은 타이밍에 알맞은 코일에 흘려보내기 위해 모터 컨트롤러를 사용한다. 
 
         이를 위해 센서를 사용하는데 대부분 홀-효과 센서를 사용한다. 
+
+<br>
+
+- `BLDC Motor Control`
+
+알맞은 타이밍에 알맞은 코일에 전류를 흘려 전자석은 만들어주어야한다.
+
+따라서 센서를 이용하여 회전자의 위치를 측정하고, 이 신호를 이용해서 모터 컨트롤러가 전류를 흘려보낸다.
+
+`BLDC Motor and Transistor Switching (Motor Controller)`
+
+![img_5.png](img_5.png)
+
+<br>
+
+`Transistor Switching Sequence`
+
+![img_6.png](img_6.png)
