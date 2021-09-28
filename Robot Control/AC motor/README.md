@@ -214,6 +214,6 @@ DC Motor에서와 같이 회전자는 자기장이 서로 정렬될 때 로렌�
 
 
  
-- 참고자로
+- 참고자
 
 [youtube](https://www.youtube.com/watch?v=aU4pvdcI0kw)
