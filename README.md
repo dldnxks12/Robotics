@@ -15,13 +15,6 @@
 
 ---
 
-- `Motor Control`
-
-      1. DC Motor
-      2. Geared Motor
-
----
-
 - `Automatic Control`
 
       1. FeedBack? Dynamics?
@@ -45,3 +38,16 @@
 
       1. AEB
       2. Frame Transformation
+
+---
+
+- `Motor Control`
+
+      1. DC Motor
+      2. Geared Motor
+
+---
+
+- `Robot Control`
+  
+      1. DC Motor, BLDC Motor, AC Motor, Stepper Motor 

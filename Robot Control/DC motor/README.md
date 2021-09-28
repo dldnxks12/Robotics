@@ -93,3 +93,15 @@
 이는 코일 또는 회전자가 정 중앙에 위치할 때, 순간적으로 힘이 0이 되는 지점이 있게 되기 때문이다.
 
 ![img_5.png](img_5.png)
+
+<br>
+
+- `Control DC Motor`
+
+DC Input이 일정하다고 할 때, PWM을 이용해서 DC 모터의 속도를 제어한다.
+
+<div align="center">
+
+![img_10.png](img_10.png)
+
+</div>
