@@ -8,7 +8,7 @@
 
 <div align="center">
 
- ![img.png](img.png)
+ ![img.png](img/img.png)
 
 전류 제어, 속도 제어, 위치 제어를 Cascade 구조로 해서 제어기를 설계한다.
 
@@ -29,7 +29,7 @@
 
 - 안정성
 
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 
 `Gain margin`  : 2 ~ 10 dB 정도면 ok  
 `Phase margin` : 30 ~ 60 degree 정도면 ok
@@ -44,7 +44,7 @@
 
     즉, Sin(x) -> Sin(PI - x) = -Sinx 
 
-![img_2.png](img_2.png)
+![img_2.png](img/img_2.png)
 
 **따라서 Phase가 -180일 때, Gain이 0dB 보다 작다면 즉, 값이 1보다 작다면 수렴한다.**
 
@@ -71,7 +71,7 @@
 
 **이 때, 입력을 잘 쫒아가는 주파수 까지가 바로 대역폭 Bandwidth이다.**
 
-![img_3.png](img_3.png)
+![img_3.png](img/img_3.png)
 
 <br>
 
@@ -103,7 +103,7 @@
 
 최종값 정리는 시간을 무한대로 보냈을 때, 시스템이 어떤 특성을 보이는 지를 살펴보는 것이다.
 
-![img_4.png](img_4.png)
+![img_4.png](img/img_4.png)
 
 </div>
 
@@ -123,7 +123,7 @@
 
 - PID 제어
 
-![img_5.png](img_5.png)
+![img_5.png](img/img_5.png)
 
 `P  제어` : 속응성이 빠르지만 정상 상태 오차가 존재한다.  
 `PI 제어` : 정상상태 오차를 줄일 수 있지만 오버슈트가 증가한다.  
@@ -145,7 +145,7 @@
 
 `이를 제거하기 위해 전향보상을 수행한다.`
 
-![img_6.png](img_6.png)
+![img_6.png](img/img_6.png)
 
 </div>
 
@@ -157,7 +157,7 @@
 
 하지만 여기서는 전달함수의 차수를 줄여 시스템을 단순하게 만드는 데에 사용된다. 
 
-![img_7.png](img_7.png)
+![img_7.png](img/img_7.png)
 
 <br>
 
@@ -169,7 +169,7 @@
 
     따라서 이 때의 Gain margin이 0dB라면 안정 상태임을 확인할 수 있다. 
 
-![img_8.png](img_8.png)
+![img_8.png](img/img_8.png)
 
 전달함수의 분모를 1로 만들어 0dB를 만드는 주파수 `Wcc`를 `교차각 주파수`라 한다. 
 
@@ -177,7 +177,7 @@
 
 **이제 위 교차각 주파수 조건과 Pole-Zero Cancelation 조건 두 가지를 이용해서 PI gain을 찾을 수 있다.**
 
-![img_10.png](img_10.png)
+![img_10.png](img/img_10.png)
 
 <br>
 
@@ -191,7 +191,7 @@
 
 여기서 리미터를 걸게 되면 오차가 누적된다. `이 오차를 제거하기 위해 Anti-Windup을 사용한다.`
 
-![img_11.png](img_11.png)
+![img_11.png](img/img_11.png)
 
 <br>
 
@@ -199,7 +199,7 @@
 
 속도 제어기도 전류 제어기와 마찬가지로 설계한다.
 
-![img_12.png](img_12.png)
+![img_12.png](img/img_12.png)
 
 <br>
 
@@ -207,5 +207,5 @@
 
 위치 제어기도 속도, 전류 제어기와 마찬가지로 설계한다.
 
-![img_13.png](img_13.png)
+![img_13.png](img/img_13.png)
 

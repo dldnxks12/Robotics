@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![img.png](img.png)
+![img.png](img/img.png)
 
 내부적으로 모터와 Gear가 맞물려 있으며, Load로 긴 판과 원 판이 달려있다.
 
@@ -22,11 +22,11 @@
 전기 방정식은 달라지지 않았으므로 그대로 사용한다.
 <div align="center">
 
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 
 <br>
 
-![img_4.png](img_4.png)
+![img_4.png](img/img_4.png)
 
     Gear 없이 모터 단독으로 도는 경우 T = Tm
 
@@ -50,19 +50,19 @@
 
 <div align="center">
 
-![img_5.png](img_5.png)
+![img_5.png](img/img_5.png)
 
 `P = 힘 * 속도`  
 
 <br>
 
-![img_6.png](img_6.png)
+![img_6.png](img/img_6.png)
 
 <br>
 
 `기계 방정식 + 전기 방정식`
 
-![img_7.png](img_7.png)
+![img_7.png](img/img_7.png)
 
 </div>
 
@@ -74,7 +74,7 @@
 
 부하는 Z 축에 대해 `평행축 정리`를 사용하여 원판과 팔의 Inertia를 Z 축에 가져와 합쳐준다.
 
-![img_8.png](img_8.png)
+![img_8.png](img/img_8.png)
 
 </div>
 
@@ -84,7 +84,7 @@
 
 <div align="center">
 
-![img_9.png](img_9.png)
+![img_9.png](img/img_9.png)
 
 </div>
 
@@ -94,7 +94,7 @@
 
 <div align="center">
 
-![img_10.png](img_10.png)
+![img_10.png](img/img_10.png)
 
 </div>
 

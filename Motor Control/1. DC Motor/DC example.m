@@ -1,4 +1,4 @@
-%% Parameter in Maxon DCX35L Motor Spec 
+% Parameter in Maxon DCX35L Motor Spec
 
 clc; % commmand line clear
 clear all; % Workspace Variable clear
