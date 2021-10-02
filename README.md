@@ -6,9 +6,10 @@
 
       1. Basic Theorems
       2. Thevenin and Norton
-      3. 1th order circuits
-      4. 2th order circuits
-      5. Op-Amps
+      3. Capacitance & Inductance
+      4. 1th order circuits
+      5. 2th order circuits      
+      6. Op-Amps
 
 --- 
 
