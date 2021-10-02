@@ -2,6 +2,15 @@
 
 <br>
 
+- `Circuits`
+
+      1. Basic Theorems
+      2. Thevenin and Norton
+      3. 1th order circuits
+      4. 2th order circuits
+      5. Op-Amps
+
+--- 
 
 - `Dynamics`
 
