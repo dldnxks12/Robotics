@@ -49,7 +49,8 @@
       1. AEB
       2. Frame Transformation
       3. PID Control
-
+      4. Local Path Planning
+          - Follow the Gap 
 ---
 
 - `Motor Control`
