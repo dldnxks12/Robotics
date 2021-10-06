@@ -50,7 +50,10 @@
       2. Frame Transformation
       3. PID Control
       4. Local Path Planning
-          - Follow the Gap 
+          - Follow the Gap
+          - Dynamic Window Approach
+          - Tangent Bug Algorithm
+          - Artificial Potential Fields
 ---
 
 - `Motor Control`
