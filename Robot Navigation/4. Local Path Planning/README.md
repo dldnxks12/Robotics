@@ -25,6 +25,6 @@
 
 <div align="center">
 
-![img.png](1. Follow the Gap/img.png)
+![image](https://user-images.githubusercontent.com/59076451/136229095-afb6cf1e-5c10-4880-86cd-3e596c58a657.png)
 
 </div>
