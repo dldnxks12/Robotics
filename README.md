@@ -61,6 +61,7 @@
       1. DC Motor
       2. Geared Motor
       3. Motor Control
+      4. ODE & Kinematics
 
 ---
 
