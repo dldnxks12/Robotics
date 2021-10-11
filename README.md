@@ -3,14 +3,21 @@
 <br>
 
 - `Circuits`
-
-      1. Basic Theorems
-      2. Thevenin and Norton
-      3. Capacitance & Inductance
-      4. 1th order circuits
-      5. 2th order circuits      
-      6. Op-Amps
-
+      
+      *DC
+        1. Basic Theorems
+        2. Thevenin and Norton
+        3. Capacitance & Inductance
+        4. 1th order circuits
+        5. 2th order circuits      
+        6. Op-Amps
+       
+      *AC 
+        7. AC Steady State Analysis
+        8. Magnetically Coupled Networks
+        9. Poly-Phase Circuits
+        10. Laplace Transform 
+        11. Two-Port Networks
 --- 
 
 - `Dynamics`
@@ -22,6 +29,17 @@
       5. Planar Dynamic of Rigid Body 
       6. Energy and Momentum in Rigid Body Dynamics 
       7. 3 Dimensional Kinematics and Dynamics of Rigid Body 
+
+---
+
+- `Signals/Systems`
+
+      1. LIT System
+      2. Fourier Transform of Periodic Signals
+      3. CT Fourier Transform 
+      4. DT Fourier Transform 
+      5. Sampling
+      6. Communication System 
 
 ---
 
@@ -68,3 +86,6 @@
 - `Robot Control`
   
       1. DC Motor, BLDC Motor, AC Motor, Stepper Motor 
+
+
+      
