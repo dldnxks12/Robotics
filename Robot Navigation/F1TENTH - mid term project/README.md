@@ -11,7 +11,7 @@
 
 #### Furtest Drive Algorithm 
 
-- Steering Part
+- Steering Part : `Ackerman Steering 구조 사용`
 
 ```python
 

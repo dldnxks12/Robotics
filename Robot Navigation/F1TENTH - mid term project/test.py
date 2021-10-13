@@ -39,3 +39,5 @@ slices = np.ma.notmasked_contiguous(mask)
 print(slices)
 print(slices[0].start)
 print(slices[0].stop)
+
+

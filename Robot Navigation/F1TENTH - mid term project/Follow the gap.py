@@ -100,7 +100,7 @@ class GapFollower:
         """
         lidar_angle = (range_index - (range_len / 2)) * self.radians_per_elem
         '''
-            Furthest Drive와는 다르게 1/2 배를 해주었다. 한 것과 안 한 것의 차이를 알아두자
+            Furthest Drive와는 다르게 1/2 배를 해주었다. 이렇게 하면 차가 지그재그로 막 움직이는게 좀 덜하다 .
         '''
         steering_angle = lidar_angle / 2
         return steering_angle
