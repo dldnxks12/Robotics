@@ -85,7 +85,8 @@
 
 - `Robot Control`
   
-      1. DC Motor, BLDC Motor, AC Motor, Stepper Motor 
-
+      1. DC Motor, BLDC Motor, AC Motor 
+      2. Forward / Inverse Kinematics in Control
+      3. Jacobian in Control
 
       
