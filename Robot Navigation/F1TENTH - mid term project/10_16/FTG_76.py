@@ -1,25 +1,23 @@
-# 90 s but 많이 안정적
-
 import numpy as np
-
 
 class CustomDriver:
     BUBBLE_RADIUS = 60  # 위험 방울 범위
 
-    PREPROCESS_CONV_SIZE = 5  # 이동 평균 Window
-    BEST_POINT_CONV_SIZE = 200  # 50 사이즈의 Window로 평균내기 이 결과로 나온 값들 중에서 제일 좋은 포인트 찾아 따라갈 것
+    PREPROCESS_CONV_SIZE = 3
+    BEST_POINT_CONV_SIZE = 200
 
     MAX_LIDAR_DIST = 3000000  # inf로 바꾸는 부분이겠지
 
     STRAIGHTS_STEERING_ANGLE = (np.pi / 18)  # 10 degrees
 
-    STRAIGHTS_SPEED = 8.0  # 직선 Speed
-    CORNERS_SPEED = 5.0  # 코너링 Speed
-    MOMENTUM = 0.5  # 관성 모멘텀
+    #STRAIGHTS_SPEED = 8.0  # 직선 Speed
+    #CORNERS_SPEED = 5.0  # 코너링 Speed
+    #MOMENTUM = 0.5  # 관성 모멘텀
+    #MOMENTUM_INDEX = 0
 
-    MOMENTUM_INDEX = 0
-
-    i = 0 # print
+    MOVING_LIST = []
+    movingAV = 0
+    TIME = 0
 
     def __init__(self):
         self.radians_per_elem = None  # 분해각
@@ -60,28 +58,39 @@ class CustomDriver:
 
         return chosen_slice.start, chosen_slice.stop  # Max Free Space의 시작점과 끝점
 
-    # 수정해볼 부분 1 --- 최적 포인트 골라내기
     def find_best_point(self, start, end, ranges):
         avg_max_gap = np.convolve(ranges[start:end], np.ones(self.BEST_POINT_CONV_SIZE),
                                   'same') / self.BEST_POINT_CONV_SIZE
 
         return avg_max_gap.argmax() + start  # 가장 먼 Point return
 
-    # 수정해볼 부분 2 --- 조향각도
+
     def get_angle(self, range_index, range_len):
 
         lidar_angle = (range_index - (range_len / 2)) * self.radians_per_elem
-
         steering_angle = lidar_angle / 2  # Furthest Drive와는 다르게 1/2 배를 해주었다. 이렇게 하면 차가 지그재그로 막 움직이는게 좀 덜하다.
 
         return steering_angle
+
+    def temp(self, current):
+
+        WINSIZE = 10
+        self.MOVING_LIST.append(current)
+        if len(self.MOVING_LIST) <= WINSIZE:
+            self.movingAV = np.sum(self.MOVING_LIST) / len(self.MOVING_LIST)
+            return  self.movingAV
+
+        self.movingAV = self.movingAV - (self.MOVING_LIST[0] / WINSIZE) + (current / WINSIZE)
+
+        del self.MOVING_LIST[0]
+
+        return self.movingAV
 
     def process_lidar(self, ranges):
 
         proc_ranges = self.preprocess_lidar(ranges)
         closest = proc_ranges.argmin()
 
-        # make bubble
         min_index = closest - self.BUBBLE_RADIUS
         max_index = closest + self.BUBBLE_RADIUS
 
@@ -94,44 +103,54 @@ class CustomDriver:
 
         gap_start, gap_end = self.find_max_gap(proc_ranges)
 
+        # 가장 먼 data의 Index
         best = self.find_best_point(gap_start, gap_end, proc_ranges)
-
+        # 조향각도
         steering_angle = self.get_angle(best, len(proc_ranges))
 
-        # STRAIGHTS_STEERING_ANGLE를 작게 줘보면?
+        # Speed = -a*Steering + b*distance + c*time
+        # Weights
+        a = 2.0
+        b = 0.4
+        c = 0.001
 
-        if abs(steering_angle) > self.STRAIGHTS_STEERING_ANGLE:
-            speed = self.CORNERS_SPEED
-            self.MOMENTUM_INDEX = 0
-            if proc_ranges[best] < 5:
-                speed = 3
+        distance = self.temp(proc_ranges[best])
+
+        self.BEST_POINT_CONV_SIZE = 200
+        self.BUBBLE_RADIUS = 60
+        if distance > 27:
+            self.TIME += 4
+            if self.TIME > 2500:
+                self.TIME = 2500
+        elif distance > 25:
+            self.TIME += 3
+            if self.TIME > 2500:
+                self.TIME = 2500
+        elif distance > 15:
+            self.TIME += 1
+            if self.TIME > 2500:
+                self.TIME = 2500
+        elif distance > 10:
+            self.BEST_POINT_CONV_SIZE = 150
+            self.BUBBLE_RADIUS = 30
+            self.TIME -= 2.0
+            if self.TIME < 0:
+                self.TIME = 0
         else:
-            if proc_ranges[best] > 25:
-                speed = self.STRAIGHTS_SPEED + (self.MOMENTUM * self.MOMENTUM_INDEX)
-                if self.MOMENTUM_INDEX <= 20:
-                    self.MOMENTUM_INDEX += 1
-                else:
-                    self.MOMENTUM_INDEX = 20
+            self.TIME -= 1.0
+            if self.TIME < 0:
+                self.TIME = 0
 
-            elif proc_ranges[best] > 15:
-                speed = self.STRAIGHTS_SPEED + (self.MOMENTUM * self.MOMENTUM_INDEX)
-                if self.MOMENTUM_INDEX <= 10:
-                    self.MOMENTUM_INDEX += 1
-                else:
-                    self.MOMENTUM_INDEX = 10
+        speed = (-a * abs(steering_angle)) + (b * distance) + (c * self.TIME) + 6
 
-            else:
-                speed = self.STRAIGHTS_SPEED + (self.MOMENTUM * self.MOMENTUM_INDEX)
-                if self.MOMENTUM_INDEX > 0:
-                    self.MOMENTUM_INDEX -= 1
-                else:
-                    self.MOMENTUM_INDEX = 0
+        if speed > 35:
+            speed = 35
+        if speed < 5:
+            speed = 5
 
-        if self.i == 10:
-            print(f"D : {proc_ranges[best]} MOMENTUM_INDEX {self.MOMENTUM_INDEX}")
-            print(f'Steering Angle in Degree : {(steering_angle / (np.pi / 2)) * 90}')
-            self.i = 0
+        print(f'A : {(steering_angle / (np.pi / 2)) * 90 : .3f} | S : {speed : .3f} | D : {distance : .3f} | T : {self.TIME}, '
+              f'A_ : {-a * abs(steering_angle) : .3f} D_ : {(b * distance) : .3f}  T_ : {(c * self.TIME) : .3f}',  end = '\r')
 
-        self.i += 1
+
 
         return speed, steering_angle

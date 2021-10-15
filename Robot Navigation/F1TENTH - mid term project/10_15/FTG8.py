@@ -1,9 +1,10 @@
+# 아이디어 : if문 떄문에 팍팍 꺾이는 것 같다. Continuous 하게
+
 import numpy as np
 
 class CustomDriver:
 
     BUBBLE_RADIUS = 80  # 위험 방울 범위
-
     PREPROCESS_CONV_SIZE = 3  # 이동 평균 Window
     BEST_POINT_CONV_SIZE = 80  # 50 사이즈의 Window로 평균내기 이 결과로 나온 값들 중에서 제일 좋은 포인트 찾아 따라갈 것
 
