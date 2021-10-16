@@ -93,8 +93,9 @@ class CustomDriver:
     # Angle의 부호가 +- 계속 바뀌면 angle 절반으로
     def angle_temp(self, angle):
 
-        if self.BEFORE_ANGLE*angle < 0: # 부호가 반ㄷ ㅐ
-            return angle / 4
+        if self.BEFORE_ANGLE*angle < 0: # 부호가 반대
+            return angle / 1000
+
         else:
             return angle
 
@@ -115,70 +116,51 @@ class CustomDriver:
 
         gap_start, gap_end = self.find_max_gap(proc_ranges)
 
-
         best = self.find_best_point(gap_start, gap_end, proc_ranges)
         steering_angle = self.get_angle(best, len(proc_ranges))
 
         # Speed = -a*Steering + b*distance + c*time
         # Weights
         a = 1.0
-        b = 0.3
+        b = 0.4
         #b_weight = 0.001
+        c = 0.002
 
         distance = self.temp(proc_ranges[best])
 
         self.BEST_POINT_CONV_SIZE = 200
         self.BUBBLE_RADIUS = 60
-        if distance > 28:
+        if distance > 27:
             a = 0.5
-            b = 0.35
-            c = 0.006
+            b = 0.5
             self.TIME += 4
             if self.TIME > 2500:
                 self.TIME = 2500
-        elif distance > 26:
+        elif distance > 25:
             a = 0.5
-            c = 0.005
+            b = 0.45
             self.TIME += 3
-            if self.TIME > 2500:
-                self.TIME = 2500
-        elif distance > 23:
-            a = 1.5
-            c = 0.004
-            self.TIME += 2
-            if self.TIME > 2500:
-                self.TIME = 2500
-        elif distance > 20:
-            a = 1.5
-            c = 0.003
-            self.TIME += 2
             if self.TIME > 2500:
                 self.TIME = 2500
         elif distance > 15:
             a = 1.5
-            c = 0.002
+            b = 0.4
             self.TIME += 1
             if self.TIME > 2500:
                 self.TIME = 2500
-        elif distance > 10 and abs(steering_angle) < self.STRAIGHTS_STEERING_ANGLE*0.2:
-            a = 1.5
-            c = 0.001
+        elif distance > 10:
+            a = 2.0
+            b = 0.4
             self.BEST_POINT_CONV_SIZE = 150
-            self.BUBBLE_RADIUS = 30
+            self.BUBBLE_RADIUS = 20
             self.TIME -= 2.0
-            if self.TIME < 50:
-                self.TIME = 50
-        elif distance > 8 and abs(steering_angle) > self.STRAIGHTS_STEERING_ANGLE*0.2:
-            a = 3.0
-            c = 0.003
-            self.BEST_POINT_CONV_SIZE = 150
-            self.BUBBLE_RADIUS = 10
-            self.TIME -= 2.0
-            if self.TIME < 50:
-                self.TIME = 50
+            if self.TIME < 0:
+                self.TIME = 0
         else:
-            a = 10.0
-            c = 0.0
+            self.BEST_POINT_CONV_SIZE = 150
+            self.BUBBLE_RADIUS = 20
+            a = 2.5
+            b = 0.3
             self.TIME -= 1.0
             if self.TIME < 0:
                 self.TIME = 0
@@ -189,17 +171,12 @@ class CustomDriver:
         # speed = self.speed_temp(speed)
 
         # Filter Jittering
+        angle = steering_angle
         steering_angle = self.angle_temp(steering_angle)
         self.BEFORE_ANGLE = steering_angle
 
-        if speed > 35:
-            speed = 35
-        if speed < 5:
-            speed = 5
+        #print(f'A : {(steering_angle / (np.pi / 2)) * 90 : .3f} | S : {speed : .3f} | D : {distance : .3f} | T : {self.TIME}, '
+        #      f' ||| A_ : {-a * abs(steering_angle) : .3f} D_ : {(b * distance) : .3f}  T_ : {(c * self.TIME) : .3f}',  end = '\r')
 
-        print(f'A : {(steering_angle / (np.pi / 2)) * 90 : .3f} | S : {speed : .3f} | D : {distance : .3f} | T : {self.TIME}, '
-              f' ||| A_ : {-a * abs(steering_angle) : .3f} D_ : {(b * distance) : .3f}  T_ : {(c * self.TIME) : .3f}',  end = '\r')
-
-
-
+        print(f'After : {(steering_angle / (np.pi / 2)) * 90 : .5f} | Before : {(angle / (np.pi / 2)) * 90 : .5f} ')
         return speed, steering_angle

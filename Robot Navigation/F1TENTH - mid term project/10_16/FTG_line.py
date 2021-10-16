@@ -1,10 +1,10 @@
 import numpy as np
 
 class CustomDriver:
-    BUBBLE_RADIUS = 60  # 위험 방울 범위
+    BUBBLE_RADIUS = 20  # 위험 방울 범위
 
     PREPROCESS_CONV_SIZE = 3
-    BEST_POINT_CONV_SIZE = 200
+    BEST_POINT_CONV_SIZE = 150
 
     MAX_LIDAR_DIST = 3000000  # inf로 바꾸는 부분이겠지
 
@@ -17,6 +17,8 @@ class CustomDriver:
     TIME = 0
 
     BEFORE_ANGLE = 0
+    BEFORE = 0
+    BEFORE_IDX = 0
 
     def __init__(self):
         self.radians_per_elem = None  # 분해각
@@ -25,7 +27,7 @@ class CustomDriver:
 
         self.radians_per_elem = (2 * np.pi) / len(ranges)
 
-        proc_ranges = np.array(ranges[180:-180])  # 이 범위 내에서만 탐지할 것  ---- 더 넓힐지 말지 고민
+        proc_ranges = np.array(ranges[135:-135])
         proc_ranges = np.convolve(proc_ranges, np.ones(self.PREPROCESS_CONV_SIZE), 'same') / self.PREPROCESS_CONV_SIZE
 
         proc_ranges = np.clip(proc_ranges, 0, self.MAX_LIDAR_DIST)
@@ -78,7 +80,7 @@ class CustomDriver:
 
     def speed_temp(self, speed):
 
-        WINSIZE = 3
+        WINSIZE = 5
         self.MOVING_LIST2.append(speed)
         if len(self.MOVING_LIST2) <= WINSIZE:
             self.movingAV2 = np.sum(self.MOVING_LIST2) / len(self.MOVING_LIST2)
@@ -90,17 +92,20 @@ class CustomDriver:
 
         return self.movingAV2
 
-    # Angle의 부호가 +- 계속 바뀌면 angle 절반으로
-    def angle_temp(self, angle):
+    def temp_D(self, current):
+        # 둘의 부호가 다른지?
+        # 둘의 거리차가 일정 이상인지?
+        before = self.BEFORE
+        gap = current - before
 
-        if self.BEFORE_ANGLE*angle < 0: # 부호가 반ㄷ ㅐ
-            return angle / 3
-        else:
-            return angle
+        return abs(gap)
 
     def process_lidar(self, ranges):
 
         proc_ranges = self.preprocess_lidar(ranges)
+        left_  = proc_ranges[30]
+        right_ = proc_ranges[-30]
+        LINE = abs(left_ - right_)
         closest = proc_ranges.argmin()
 
         min_index = closest - self.BUBBLE_RADIUS
@@ -116,68 +121,46 @@ class CustomDriver:
         gap_start, gap_end = self.find_max_gap(proc_ranges)
 
         best = self.find_best_point(gap_start, gap_end, proc_ranges)
+        '''
+        # Deal with Sudden Gap
+        if self.BEFORE != 0:
+            GAP = self.temp_D(proc_ranges[best])
+            #print("GAP", GAP)
+            if GAP > 10:
+                best = (best + self.BEFORE_IDX) // 2
+               # print("#--------------------- Occured !! -------------- # ")
+
+        self.BEFORE = proc_ranges[best] # 다음을 위해 값 저장
+        self.BEFORE_IDX = best
+        '''
         steering_angle = self.get_angle(best, len(proc_ranges))
 
         # Speed = -a*Steering + b*distance + c*time
         # Weights
-        a = 1.0
+        a = 3.0
         b = 0.4
-        #b_weight = 0.001
         c = 0.002
-
+        d = 0.5
         distance = self.temp(proc_ranges[best])
 
-        self.BEST_POINT_CONV_SIZE = 200
-        self.BUBBLE_RADIUS = 60
-        if distance > 27:
-            a = 0.5
-            b = 0.5
-            self.TIME += 4
-            if self.TIME > 2500:
-                self.TIME = 2500
-        elif distance > 25:
-            a = 0.5
-            b = 0.45
-            self.TIME += 3
-            if self.TIME > 2500:
-                self.TIME = 2500
-        elif distance > 15:
-            a = 1.5
-            b = 0.4
-            self.TIME += 1
-            if self.TIME > 2500:
-                self.TIME = 2500
-        elif distance > 10:
-            a = 2.0
-            self.BEST_POINT_CONV_SIZE = 150
-            self.BUBBLE_RADIUS = 30
-            self.TIME -= 2.0
-            if self.TIME < 0:
-                self.TIME = 0
+        if distance > 15:
+            self.TIME += 5
+            if self.TIME > 1500:
+                self.TIME = 1500
         else:
-            a = 2.5
-            b = 0.3
-            self.TIME -= 1.0
-            if self.TIME < 0:
-                self.TIME = 0
+            self.TIME -= 5
+            if self.TIME < 100:
+                self.TIME = 100
 
-        speed = (-a * abs(steering_angle)) + (b * distance) + (c * self.TIME) + 6
+        speed = (-a * abs(steering_angle)) + (b * distance) + (c * self.TIME) - (d * LINE) + 6
 
-        # Filter Speed
-        # speed = self.speed_temp(speed)
+        speed = self.speed_temp(speed)
 
-        # Filter Jittering
-        steering_angle = self.angle_temp(steering_angle)
-        self.BEFORE_ANGLE = steering_angle
+        print(f'A : {(steering_angle / (np.pi / 2)) * 90 : .3f} | S : {speed : .3f} | D : {distance : .3f} | T : {self.TIME}',  end = '\r')
 
-        if speed > 35:
-            speed = 35
-        if speed < 5:
-            speed = 5
+              #f' ||| A_ : {-a * abs(steering_angle) : .3f} | D_ : {(b * distance) : .3f}  | T_ : {(c * self.TIME) : .3f} | LINE : {LINE}',  end = '\r')
 
-        print(f'A : {(steering_angle / (np.pi / 2)) * 90 : .3f} | S : {speed : .3f} | D : {distance : .3f} | T : {self.TIME}, '
-              f' ||| A_ : {-a * abs(steering_angle) : .3f} D_ : {(b * distance) : .3f}  T_ : {(c * self.TIME) : .3f}',  end = '\r')
-
+        # print(f'After : {(steering_angle / (np.pi / 2)) * 90 : .5f} | Before : {(angle / (np.pi / 2)) * 90 : .5f} ')
 
 
         return speed, steering_angle
