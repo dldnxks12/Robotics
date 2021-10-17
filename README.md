@@ -4,15 +4,12 @@
 
 - `Circuits`
       
-      *DC
         1. Basic Theorems
         2. Thevenin and Norton
         3. Capacitance & Inductance
         4. 1th order circuits
         5. 2th order circuits      
         6. Op-Amps
-       
-      *AC 
         7. AC Steady State Analysis
         8. Magnetically Coupled Networks
         9. Poly-Phase Circuits
