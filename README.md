@@ -88,5 +88,6 @@
       1. DC Motor, BLDC Motor, AC Motor 
       2. Forward / Inverse Kinematics in Control
       3. Jacobian in Control
+      4. Robot Dynamics
 
       
