@@ -89,7 +89,6 @@
       2. Forward / Inverse Kinematics in Control
       3. Jacobian in Control
       4. Robot Dynamics
-            - Newtonian Mechanism
-            - Lagrangian Mechanism
+
 
       
