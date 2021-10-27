@@ -2,10 +2,10 @@ import numpy as np
 
 
 class CustomDriver:
-    BUBBLE_RADIUS = 60
+    BUBBLE_RADIUS = 40
 
     PREPROCESS_CONV_SIZE = 3
-    BEST_POINT_CONV_SIZE = 80
+    BEST_POINT_CONV_SIZE = 100
 
     MAX_LIDAR_DIST = 3000000
 
@@ -24,6 +24,7 @@ class CustomDriver:
     BEFORE_IDX = 0
     # WEIGHT
     b = 0.4
+    e = 0
 
     def __init__(self):
         self.radians_per_elem = None  # 분해각
@@ -102,11 +103,12 @@ class CustomDriver:
     def process_lidar(self, ranges):
 
         proc_ranges = self.preprocess_lidar(ranges)
-        left_ = proc_ranges[300]
-        right_ = proc_ranges[-300]
+        left_ = proc_ranges[120]
+        right_ = proc_ranges[-120]
         LINE = abs(left_ - right_)
 
         LINE = self.LINE_TEMP(LINE)
+
 
         closest = proc_ranges.argmin()
 
@@ -125,12 +127,23 @@ class CustomDriver:
         best = self.find_best_point(gap_start, gap_end, proc_ranges)
         steering_angle = self.get_angle(best, len(proc_ranges))
 
-
+        # Speed = -a*Steering + b*distance + c*time
         # Weights
-        a = 5.5
+        a = 7.0
         # b = 0.4
         c = 0.005
-        d = 0.02 # --------------------------- d 또한 조금 더 변화시켜보자 line 차이가 threshold 이상이라면 +의 값 차이가 threshold 이상이라면 -의 값으로
+        d = 0.005 # --------------------------- d 또한 조금 더 변화시켜보자 line 차이가 threshold 이상이라면 +의 값 차이가 threshold 이상이라면 -의 값으로
+
+        if LINE <= 0.5:
+            d = -0.005
+            self.e += 0.005
+            if self.e > 0.5:
+                self.e = 0.5
+        else:
+            d = 0.005
+            self.e -= 0.005
+            if self.e < 0:
+                self.e = 0
 
         DIFF, distance = self.temp(proc_ranges[best])
 
@@ -142,27 +155,18 @@ class CustomDriver:
             if self.TIME > 650:
                 self.TIME = 650
         else:
-            self.TIME -= 2.0
+            self.TIME -= 2
             self.b -= 0.0015
             if self.b <= 0.35:
                 self.b = 0.35
             if self.TIME < 300:
                 self.TIME = 300
 
-        if distance > 15:
-            d = 0.005
-            #self.BEST_POINT_CONV_SIZE = 80
-            #self.BUBBLE_RADIUS = 20
-        elif distance <= 15:
-            d = 0.03
-            #self.BEST_POINT_CONV_SIZE = 100
-            #self.BUBBLE_RADIUS = 40
+        self.BEST_POINT_CONV_SIZE = 100
+        self.BUBBLE_RADIUS = 40
 
-        # 거리가 확 커질 때 가장 많이 discrete하게 커지는 값
-        # 1. angle 2. distance 3. LINE GAP
-        # distance는 filtering 진행했음
-        # LINE GAP을 filtering 해보자.
-        speed = (-a * abs(steering_angle)) + (self.b * distance) + (c * self.TIME) + (-d * LINE) + 6
+
+        speed = (-a * abs(steering_angle)) + (self.b * distance) + (c * self.TIME) + (-d * LINE) + self.e + 6
 
         print(
             f'B value : {self.b : .3f} | S : {speed : .3f} | D : {distance : .3f} | T : {self.TIME} | LINEGAP : {LINE : .5f}',
