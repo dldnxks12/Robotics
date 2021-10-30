@@ -24,8 +24,8 @@ class CustomDriver:
     AFTER2 = 0
 
     # WEIGHT
-    a = 4.0
-    b = 0.4
+    a = 6.0
+    b = 0.375
     c = 0.005
 
     TIME = 0
@@ -131,33 +131,29 @@ class CustomDriver:
         best = self.find_best_point(gap_start, gap_end, proc_ranges)
         steering_angle = self.get_angle(best, len(proc_ranges))
 
-        if LINE <= 0.5:
-            d = -0.2
+        if LINE <= 0.8:
+            d = -0.5
         else:
             d = 0.2
 
         DIFF, distance = self.DISTANCE_TEMP(proc_ranges[best])
 
         if DIFF >= 0:
-            self.TIME += 2.5
-            self.b += 0.003
-            if self.b >= 0.4:
-                self.b = 0.4
-            if self.TIME > 650:
-                self.TIME = 650
+            self.TIME += 2
+            if self.TIME > 550:
+                self.TIME = 550
         else:
             self.TIME -= 2
-            self.b -= 0.0015
-            if self.b <= 0.35:
-                self.b = 0.35
-            if self.TIME < 300:
-                self.TIME = 300
+            if self.TIME < 200:
+                self.TIME = 200
 
         # 최대한 선형적으로 만들어야 가감속에 의한 Jittering이 적다.
         speed = (-self.a * abs(steering_angle)) + (self.b * distance) + (self.c * self.TIME) + (-d * LINE) + 6
 
-        Speed_DIFF = self.Speed_D(speed)*1.5
+        Speed_DIFF = self.Speed_D(speed) * 2.5 # 추가 가감속 term
         speed += Speed_DIFF
+
+
         print(
             f'S : {speed : .3f} | D : {distance : .3f} | B Value : {self.b : .3f} | Speed_DIFF : {Speed_DIFF : .3f} | LINEGAP : {LINE : .5f}',
             end='\r')

@@ -5,7 +5,7 @@ import numpy as np
 class CustomDriver:
     BUBBLE_RADIUS = 20
     PREPROCESS_CONV_SIZE = 3
-    BEST_POINT_CONV_SIZE = 100
+    BEST_POINT_CONV_SIZE = 85
     MAX_LIDAR_DIST = 3000000
     STRAIGHTS_STEERING_ANGLE = (np.pi / 18)  # 10 degrees
 
@@ -131,10 +131,10 @@ class CustomDriver:
         best = self.find_best_point(gap_start, gap_end, proc_ranges)
         steering_angle = self.get_angle(best, len(proc_ranges))
 
-        if LINE <= 0.5:
+        if LINE <= 0.7:
             d = -0.2
         else:
-            d = 0.2
+            d = 0.25
 
         DIFF, distance = self.DISTANCE_TEMP(proc_ranges[best])
 
@@ -143,15 +143,15 @@ class CustomDriver:
             self.b += 0.003
             if self.b >= 0.4:
                 self.b = 0.4
-            if self.TIME > 650:
-                self.TIME = 650
+            if self.TIME > 500:
+                self.TIME = 500
         else:
             self.TIME -= 2
             self.b -= 0.0015
             if self.b <= 0.35:
                 self.b = 0.35
-            if self.TIME < 300:
-                self.TIME = 300
+            if self.TIME < 250:
+                self.TIME = 250
 
         # 최대한 선형적으로 만들어야 가감속에 의한 Jittering이 적다.
         speed = (-self.a * abs(steering_angle)) + (self.b * distance) + (self.c * self.TIME) + (-d * LINE) + 6
