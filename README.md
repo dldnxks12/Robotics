@@ -70,7 +70,8 @@
           - Tangent Bug Algorithm
           - Artificial Potential Fields
 
-      5. F1TENTH driving algotrithm 
+      5. F1TENTH driving algotrithm
+      6. SLAM
   
 ---
 
