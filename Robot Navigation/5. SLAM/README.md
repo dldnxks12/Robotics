@@ -19,7 +19,7 @@ Landmark가 주어질 때, 로봇의 센싱 데이터(거리.. )를 통해 현�
 
 Ex) 2D : (x, y, θ)
 
-![img.png](img.png)
+![img.png](img/img.png)
 
 </div>
 
@@ -33,7 +33,7 @@ Ex) 2D : (x, y, θ)
 
 정확한 센서와 함께 현재 위치를 알고 있다면, 센싱 데이터를 통해 발견한 Landmark를 특정 위치에 Mapping 할 수 있다.
 
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 
 </div>
 
@@ -47,7 +47,7 @@ Ex) 2D : (x, y, θ)
 
 <div align="center">
 
-![img_2.png](img_2.png)
+![img_2.png](img/img_2.png)
 
 </div>
 
@@ -69,7 +69,7 @@ Ex) 2D : (x, y, θ)
 
 <div align="center">
 
-![img_3.png](img_3.png)
+![img_3.png](img/img_3.png)
 
 </div>
 
@@ -81,21 +81,21 @@ Ex) 2D : (x, y, θ)
 
 주로 Gaussian 분포를 사용한다. 
 
-![img_4.png](img_4.png)
+![img_4.png](img/img_4.png)
 
 즉, 다음 수식과 같다. (Full SLAM)
 
-![img_5.png](img_5.png)
+![img_5.png](img/img_5.png)
 
-![img_7.png](img_7.png)
+![img_7.png](img/img_7.png)
 
 다음은 지금까지의 정보를 가지고, Online으로 SLAM을 수행하는 Online SLAM이다.
 
 실질적으로 더 많이 사용하는 SLAM이다.
 
-![img_6.png](img_6.png)
+![img_6.png](img/img_6.png)
 
-![img_8.png](img_8.png)
+![img_8.png](img/img_8.png)
 
 </div>
 
@@ -105,7 +105,7 @@ Ex) 2D : (x, y, θ)
 
 <div align="center">
 
-![img_9.png](img_9.png)
+![img_9.png](img/img_9.png)
 
 </div>
 
@@ -113,7 +113,7 @@ Ex) 2D : (x, y, θ)
 
 <div align="center">
 
-![img_10.png](img_10.png)
+![img_10.png](img/img_10.png)
 
 </div>
 
@@ -123,6 +123,6 @@ Ex) 2D : (x, y, θ)
 
 <div align="center">
 
-![img_11.png](img_11.png)
+![img_11.png](img/img_11.png)
 
 </div>
