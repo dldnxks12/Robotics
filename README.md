@@ -93,4 +93,12 @@
             - Lagrangian Method 
 
 
+---
+
+- TODO 
+
+      1. Motor Control 
+      2. Control System Design
+      3. Actuator 
+
       
