@@ -90,7 +90,9 @@
       2. Forward / Inverse Kinematics in Control
       3. Jacobian in Control
       4. Robot Dynamics
+            - Newtonian Method 
             - Lagrangian Method 
+            
       5. Path Planning / Trajectory Planning
       6. Robot Control 
             - CTM 
