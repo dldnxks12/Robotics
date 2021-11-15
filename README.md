@@ -91,6 +91,11 @@
       3. Jacobian in Control
       4. Robot Dynamics
             - Lagrangian Method 
+      5. Path Planning / Trajectory Planning
+      6. Robot Control 
+            - CTM 
+            - Joint Level Control 
+            
 
 
 ---
