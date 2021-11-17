@@ -56,6 +56,33 @@
       2. Forward Kinematics
       3. Backward Kinematics
       4. Jacobian
+      
+---
+
+- `Robot Control`
+  
+      1. DC Motor, BLDC Motor, AC Motor 
+      2. Kinematics
+      3. Jacobian
+      4. Robot Dynamics
+            - Newtonian Method 
+            - Lagrangian Method 
+            
+      5. Path Planning
+      6. Control Theory 
+            - CTM 
+            - Joint Level Control 
+     
+      7. Design Considerations of Manipulation
+            
+---
+
+- `Motor Control`
+
+      1. DC Motor
+      2. Geared Motor
+      3. Motor Control
+      4. ODE & Kinematics
 
 ---
 
@@ -70,26 +97,16 @@
           - Tangent Bug Algorithm
           - Artificial Potential Fields
 
-      5. F1TENTH driving algotrithm 
+      5. F1TENTH driving algotrithm
+      6. SLAM
   
----
 
-- `Motor Control`
+---  
 
-      1. DC Motor
-      2. Geared Motor
-      3. Motor Control
-      4. ODE & Kinematics
+- TODO 
 
----
-
-- `Robot Control`
-  
-      1. DC Motor, BLDC Motor, AC Motor 
-      2. Forward / Inverse Kinematics in Control
-      3. Jacobian in Control
-      4. Robot Dynamics
-            - Lagrangian Method 
-
+      1. Motor Control 
+      2. Control System Design
+      3. Actuator 
 
       
