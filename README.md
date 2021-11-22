@@ -68,12 +68,11 @@
             - Newtonian Method 
             - Lagrangian Method 
             
-      5. Path Planning
-      6. Control Theory 
-            - CTM 
-            - Joint Level Control 
-     
-      7. Design Considerations of Manipulation
+      5. Path Planning           
+      6. Design Considerations of Manipulation
+      7. Linear System Control 
+      8. Non-Linear System Control 
+         
             
 ---
 
