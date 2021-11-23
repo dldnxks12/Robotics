@@ -1,5 +1,14 @@
 ### Robot Navigation mid term project - `F1 TENTH Driving Algorithm`
 
+`Took First Place in F1TENTH Mid Term EXAM !! 🍑`
+
+<div align=center>
+        
+![image](https://user-images.githubusercontent.com/59076451/143087485-7b1094a7-34f1-4215-aab1-459737e2ff5d.png)
+        
+</div>        
+
+
 - Consider point
 
         1. 직선 거리에서는 빠르게
