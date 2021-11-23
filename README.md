@@ -68,12 +68,12 @@
             - Newtonian Method 
             - Lagrangian Method 
             
-      5. Path Planning           
-      6. Design Considerations of Manipulation
-      7. Linear System Control 
-      8. Non-Linear System Control 
+      5. Path Planning            
+      6. Linear System Control 
+      7. Non-Linear System Control 
 
-      # Simulation 
+      # Singularity Problem 
+      # MATLAB Simulation 
          - 1DOF Pendulum
          
             
