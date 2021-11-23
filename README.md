@@ -72,6 +72,9 @@
       6. Design Considerations of Manipulation
       7. Linear System Control 
       8. Non-Linear System Control 
+
+      # Simulation 
+         - 1DOF Pendulum
          
             
 ---
