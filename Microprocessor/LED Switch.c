@@ -8,7 +8,7 @@ unsigned char In;
 
 int main(void){
 
-    MCUCR = 0x00;
+    MCUCR = 0x00; // 내부 스위치 이용
     DDRD = 0xFF; // D PORT Output Mode ---- PORT D가 모두 VCC에 연결되있고, 0V 입력을 주면 동작
     DDRB = 0x00; // B PORT Input Mode ----- PORT B가 모두 GND에 연결되있고, 5V 입력을 주면 동작
 
