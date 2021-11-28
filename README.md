@@ -1,6 +1,5 @@
 ## Robotics
 
-
 - `Automatic Control`
 
       1. FeedBack? Dynamics?
@@ -63,7 +62,17 @@
       6. SLAM
   
 
----  
+---
+
+- `Dynamics`
+
+      1. Gravity and motion of a point 
+      2. Force, Mass, Acceleration 
+      3. Energy and Momentum 
+      4. Planar Kinematics of Rigid Body 
+      5. Planar Dynamic of Rigid Body 
+      6. Energy and Momentum in Rigid Body Dynamics 
+      7. 3 Dimensional Kinematics and Dynamics of Rigid Body
 
 - `Circuits`
       
@@ -80,16 +89,12 @@
         11. Two-Port Networks
 --- 
 
-- `Dynamics`
+- `Microprocessor - Atmega128`
 
-      1. Gravity and motion of a point 
-      2. Force, Mass, Acceleration 
-      3. Energy and Momentum 
-      4. Planar Kinematics of Rigid Body 
-      5. Planar Dynamic of Rigid Body 
-      6. Energy and Momentum in Rigid Body Dynamics 
-      7. 3 Dimensional Kinematics and Dynamics of Rigid Body
-
+        1. ISR
+        2. Timer
+        3. ADC
+        4. USART / SPI
 
 <br>
 
