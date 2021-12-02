@@ -34,17 +34,21 @@
 
       # Singularity Problem 
       # MATLAB Simulation 
-         - 1DOF Pendulum
+         - 1 DOF Pendulum
+         - 2 DOF Robot Arm
+         - Robot Parameter Estimation
           
 ---
 
-- `Motor Control`
+- `Robotics Experiment`
 
       1. DC Motor
       2. Geared Motor
       3. Motor Control
       4. ODE & Kinematics
-
+  
+      # Motor Control with Atmega128 & MFC
+      # 7 Sensors Smart Plant with Atmega128
 ---
 
 - `Robot Navigation`
@@ -60,7 +64,9 @@
 
       5. F1TENTH driving algotrithm
       6. SLAM
-  
+
+      # Mid Term Project   - F1TENTH 
+      # Final Term Project - F1TENTH
 
 ---
 
