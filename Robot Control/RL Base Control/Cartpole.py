@@ -29,7 +29,7 @@ class DQN(tf.keras.Model):
 # 카트폴 예제에서의 DQN 에이전트
 class DQNAgent:
     def __init__(self, state_size, action_size):
-        self.render = False
+        self.render = False # Drawing
 
         # 상태와 행동의 크기 정의
         self.state_size = state_size
@@ -41,7 +41,7 @@ class DQNAgent:
         self.epsilon = 1.0
         self.epsilon_decay = 0.999
         self.epsilon_min = 0.01
-        self.batch_size = 64
+        self.batch_size = 128
         self.train_start = 1000
 
         # 리플레이 메모리, 최대 크기 2000
@@ -163,5 +163,5 @@ if __name__ == "__main__":
 
                 # 이동 평균이 400 이상일 때 종료
                 if score_avg > 300:
-                    agent.model.save_weights("./model4", save_format="tf")
+                    agent.model.save_weights("./Models/model_layer24", save_format="tf")
                     sys.exit()

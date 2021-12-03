@@ -33,7 +33,7 @@ class DQNAgent:
 
         # 모델과 타깃 모델 생성
         self.model = DQN(action_size)
-        self.model.load_weights("./model3")
+        self.model.load_weights("./Models/model_layer12")
 
     # 입실론 탐욕 정책으로 행동 선택
     def get_action(self, state):
