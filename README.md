@@ -34,9 +34,9 @@
 
       # Singularity Problem 
       # MATLAB Simulation 
-         - 1 DOF Pendulum  Control Simulation 
-         - 2 DOF Robot Arm Control Simulation
-         - 3 DOF Robot Arm Control Simulation
+         - 1 DOF Pendulum Control Simulation 
+         - 2 DOF Pendulum Control Simulation
+         - 3 DOF Pendulum Control Simulation
          - Robot Parameter Estimation
           
 ---
