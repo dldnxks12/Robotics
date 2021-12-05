@@ -37,7 +37,8 @@
          - 1 DOF Pendulum Control Simulation 
          - 2 DOF Pendulum Control Simulation
          - 3 DOF Pendulum Control Simulation
-         - Robot Parameter Estimation
+         - 1 Link Parameter Estimation
+         - 2 Link Parameter Estimation
           
 ---
 
