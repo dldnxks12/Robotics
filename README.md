@@ -39,6 +39,10 @@
          - 3 DOF Pendulum Control Simulation
          - 1 Link Parameter Estimation
          - 2 Link Parameter Estimation
+
+         - 1 DOF PID CTM Controller
+         - 2 DOF PID CTM Controller
+         - 3 DOF PID CTM Controller 
           
 ---
 
