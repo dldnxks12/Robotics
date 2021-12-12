@@ -175,7 +175,7 @@ class CustomDriver:
         steering_angle = self.angle_temp(steering_angle)
         self.BEFORE_ANGLE = steering_angle
 
-        #print(f'A : {(steering_angle / (np.pi / 2)) * 90 : .3f} | S : {speed : .3f} | D : {distance : .3f} | T : {self.TIME}, '
+        #print(f'A - REINFORCE : {(steering_angle / (np.pi / 2)) * 90 : .3f} | S : {speed : .3f} | D : {distance : .3f} | T : {self.TIME}, '
         #      f' ||| A_ : {-a * abs(steering_angle) : .3f} D_ : {(b * distance) : .3f}  T_ : {(c * self.TIME) : .3f}',  end = '\r')
 
         print(f'After : {(steering_angle / (np.pi / 2)) * 90 : .5f} | Before : {(angle / (np.pi / 2)) * 90 : .5f} ')
