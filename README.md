@@ -42,6 +42,7 @@
 
          - 1 DOF PID CTM Controller (Joint Space)
          - 2 DOF PID CTM Controller (Cartesian Space)
+         - 3 DOF PID CTM Controller (Joint Space)
          - 3 DOF PID CTM Controller (Cartesian Space)
           
 ---
