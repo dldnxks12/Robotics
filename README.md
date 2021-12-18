@@ -54,7 +54,7 @@
       3. Motor Control
       4. ODE & Kinematics
   
-      # Motor Control with Atmega128 & MFC
+      # Motor Control with Atmega128 & MFC / ODE Simulation
       # 7 Sensors Smart Plant with Atmega128
 ---
 
