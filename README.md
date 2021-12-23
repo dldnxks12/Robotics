@@ -8,7 +8,6 @@
       4. Root-Locus
       5. Nyquist and Bode plot
 
----
 
 - `Robot Kinematics`
 
@@ -16,8 +15,6 @@
       2. Forward Kinematics
       3. Backward Kinematics
       4. Jacobian
-      
----
 
 - `Robot Control`
   
@@ -44,8 +41,6 @@
          - 2 DOF PID CTM Controller (Cartesian Space)
          - 3 DOF PID CTM Controller (Joint Space)
          - 3 DOF PID CTM Controller (Cartesian Space)
-          
----
 
 - `Robotics Experiment`
 
@@ -56,7 +51,7 @@
   
       # Motor Control with Atmega128 & MFC / ODE Simulation
       # 7 Sensors Smart Plant with Atmega128
----
+
 
 - `Robot Navigation`
 
@@ -74,8 +69,6 @@
 
       # Mid Term Project   - F1TENTH 
       # Final Term Project - F1TENTH
-
----
 
 - `Dynamics`
 
@@ -100,7 +93,6 @@
         9. Poly-Phase Circuits
         10. Laplace Transform 
         11. Two-Port Networks
---- 
 
 - `Microprocessor - Atmega128`
 
