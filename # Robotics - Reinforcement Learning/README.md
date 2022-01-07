@@ -2,6 +2,10 @@
 
 
 - `Week 1 : Dynamic Programming`
+        
+        - Policy Iteration
+        - Value Iteration
+
 - `Week 2 : Monte Carlo`
 - `Week 3 : Temporal Difference`
 - `Week 4 : Deep RL`
