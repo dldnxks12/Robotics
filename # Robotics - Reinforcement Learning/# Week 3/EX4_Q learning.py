@@ -30,7 +30,7 @@ def Q_Learning(env, random_policy, epsilon, n_epsiodes):
         state = env.reset()  # Initial State
 
         gamma = 0.9
-        alpha = 0.2
+        alpha = 0.1
 
         done = False
         while True:
