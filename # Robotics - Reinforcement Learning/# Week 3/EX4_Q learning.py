@@ -1,23 +1,19 @@
-# SARSA (On Policy Temporal Difference Control)
-
-"""
-Action space:
-0 = south
-1 = north
-2 = east
-3 = west
-4 = pickup
-5 = dropoff
-
-state space : (taxi_row, taxi_col, passenger_location, destination)
-"""
+# Q learning (Off policy Learning for Temporal difference)
 
 import gym
 import sys
-import random
 import numpy as np
+import random
 from time import sleep
 
+
+def behavior_policy(random_policy, state, epsilon):
+    if random.random() < epsilon:
+        action = env.action_space.sample()
+    else:
+        action = np.argmax(random_policy[state, :])
+
+    return action
 
 def epsilon_greedy_policy(Q, state, epsilon):
     if random.random() < epsilon:
@@ -27,34 +23,36 @@ def epsilon_greedy_policy(Q, state, epsilon):
 
     return action
 
-def SARSA(env, epsilon, n_epsiodes):
+def Q_Learning(env, random_policy, epsilon, n_epsiodes):
     Q = np.zeros([env.nS, env.nA])
 
-    for _ in range(n_epsiodes):
+    for e in range(n_epsiodes):
         state = env.reset()  # Initial State
-        action = epsilon_greedy_policy(Q, state, epsilon)  # initial action
+
         gamma = 0.9
-        alpha = 0.1
+        alpha = 0.2
 
         done = False
         while True:
+            action = epsilon_greedy_policy(Q, state, epsilon)
             next_state, reward, done, info = env.step(action)
-            next_action = epsilon_greedy_policy(Q, next_state, epsilon)
 
-            Q[state][action] = ( (1-alpha) * Q[state][action] ) + (alpha*( reward + gamma*(Q[next_state][next_action]) ))
+            Q[state][action] = ((1-alpha) * Q[state][action]) + (alpha*(reward + gamma * max(Q[next_state])))
 
             state = next_state
-            action = next_action
 
             if done == True:
                 break
-    return Q
 
+        print(f"Episode : {e}")
+    return Q
 
 env = gym.make('Taxi-v3').env
 env = gym.wrappers.TimeLimit(env, max_episode_steps = 30)
 
-Q = SARSA(env, epsilon = 0.3, n_epsiodes = 50000)
+random_policy = np.ones([env.nS, env.nA]) / env.nA
+
+Q = Q_Learning(env, random_policy, epsilon = 0.1, n_epsiodes = 500000)
 
 state = env.reset() # start state is random ...
 env.render()
