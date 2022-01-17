@@ -34,7 +34,8 @@ def Q_Learning(env, random_policy, epsilon, n_epsiodes):
 
         done = False
         while True:
-            action = epsilon_greedy_policy(Q, state, epsilon)
+            #action = epsilon_greedy_policy(Q, state, epsilon)
+            action = behavior_policy(random_policy, state, epsilon)
             next_state, reward, done, info = env.step(action)
 
             Q[state][action] = ((1-alpha) * Q[state][action]) + (alpha*(reward + gamma * max(Q[next_state])))
