@@ -15,6 +15,7 @@
         
         # Law of Large Number
         # Empirical Mean 
+        # Importance Sampling 
         
 - `Week 3 : Temporal Difference`
 
@@ -25,6 +26,12 @@
         - Q Learning
         - Double Q Learning
         - Deep Q Learning
+        - Function Approximation 
+
+        # Robbins-Monro rule
+        # Sherman-Morrison fomular
+        # Projected Bellman Eqn
+        # Maximization bias 
 
 - `Week 4 : Deep RL`
 - `Week 5 : Advanced RL`
