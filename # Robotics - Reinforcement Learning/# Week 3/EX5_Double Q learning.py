@@ -46,7 +46,7 @@ def Double_Q_Learning(env, epsilon, n_episodes):
 
         print(f"Episode : {e}")
 
-    if np.abs(np.mean(Q1 - Q2)) < 0.001:
+    if np.abs(np.mean(Q1 - Q2)) < 1:
         print("Q Value if Identical .. !")
     else:
         print("Q Value if Not Identical .. !")
