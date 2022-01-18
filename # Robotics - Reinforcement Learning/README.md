@@ -17,6 +17,15 @@
         # Empirical Mean 
         
 - `Week 3 : Temporal Difference`
+
+        - Temporal difference(0)
+        - Temporal difference(1)
+        - Temporal difference(λ)
+        - SARSA
+        - Q Learning
+        - Double Q Learning
+        - Deep Q Learning
+
 - `Week 4 : Deep RL`
 - `Week 5 : Advanced RL`
 - `Week 6 : Project `
