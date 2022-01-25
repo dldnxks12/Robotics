@@ -33,6 +33,12 @@
         # Projected Bellman Eqn
         # Maximization bias 
 
-- `Week 4 : Deep RL`
+- `Week 4 : Policy Gradient`
+
+        - REINFORCE
+        - A2C
+        - DPG
+        - DDPG
+
 - `Week 5 : Advanced RL`
 - `Week 6 : Project `
