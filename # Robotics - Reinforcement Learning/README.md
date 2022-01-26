@@ -40,5 +40,12 @@
         - DPG
         - DDPG
 
+        # PG Proof
+        # Information Theory 
+            - Self Information
+            - Shannon-Entropy
+            - KL divergence
+            - Cross Entropy
+
 - `Week 5 : Advanced RL`
 - `Week 6 : Project `
