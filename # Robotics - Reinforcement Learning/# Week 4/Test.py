@@ -3,6 +3,7 @@ import gym
 import random
 from time import sleep
 import matplotlib.pyplot as plt
+from IPython.display import clear_output
 
 
 env = gym.make('BipedalWalker-v3')
